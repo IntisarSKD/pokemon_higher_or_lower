@@ -1,23 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import LogInModal from './components/LogInModal';
 import PlayContainer from './containers/PlayContainer';
 import PokemonList from './components/PokemonList';
 
 function App() {
-  const [listOfUsers, setListOfUsers] = useState([]);
-  const [loggedInUserId, setLoggedInUserId] = useState(0);
+
+  const [player, setPlayer] = useState("");
+
+  // const fetchPlayer = async () => {
+  //   const response = await fetch("http://localhost:8080/player");
+  //   const data = await response.json();
+  //   setPlayer(data);
+  // }
+
+//   useEffect(() => {
+//     fetchPlayer();
+// }, [])
+
+
   return (
     <>
-    <h1>Higher or Lower: Pokèmon edition</h1>
-    <button>Login</button>
-    <button>Play</button>
-    <button>LeaderBoard</button>
-    
-
-    <PlayContainer/>
-    {/* <LogInModal/> */}
-    {/* <PokemonList/> */}
+    <h1>Pokemon: Higher or Lower!</h1>
+    <PlayContainer player={player} setPlayer={setPlayer}/>
     </>
   );
 }
