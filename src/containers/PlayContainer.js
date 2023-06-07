@@ -8,7 +8,6 @@ const PlayContainer = () => {
 
     return ( 
         <>
-        <h2>PlayContainer</h2>
         {/* <PokemonList/> */}
         {/* Game container is as an on click feature for a return to homePage button */}
         {/* <App/> */}
