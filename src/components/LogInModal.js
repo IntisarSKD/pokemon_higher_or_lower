@@ -1,22 +1,3 @@
-// import LogInForm from "./LogInForm";
-
-// const LogInModal = () => {
-
-//     const [openLogInModal, setOpenLogInModal] = useState(false);
-//     const [openSignUpModal, setOpenSignUpModal] = useState(false);
-
-//     const handleToggleLogInModal = () => setOpenLogInModal(!openLogInModal);
-//     const handleToggleSignUpModal = () => setOpenSignUpModal(!openSignUpModal);
-
-//     return ( 
-//         <>
-//         {/* <LogInForm/> */}
-//         </>
-//      );
-// }
- 
-// export default LogInModal;
-
 import { useState } from "react";
 
 const LogInModal = ({ handleLogin }) => {
