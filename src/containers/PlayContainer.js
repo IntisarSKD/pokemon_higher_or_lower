@@ -1,15 +1,3 @@
-// const PlayContainer = () => {
-//     return ( 
-//         <>
-//             <h1>Which Pokémon has the highest combined total power?</h1>
-//             <button>Restart game</button>
-//         </>
-//      );
-// }
- 
-// export default PlayContainer;
-
-
 import { useState } from 'react';
 
 const PlayContainer = () => {
