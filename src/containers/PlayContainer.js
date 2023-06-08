@@ -5,11 +5,42 @@ const PlayContainer = () => {
   const [lives, setLives] = useState(3);
   const [maxScore, setMaxScore] = useState(0);
 
-  const handleAnswer = (isCorrect) => {
-    if (isCorrect) {
+  const pikachuStats = {
+    hp: 35,
+    attack: 55,
+    defense: 40,
+    specialAttack: 50,
+    specialDefense: 50,
+    speed: 90,
+  };
+
+  const charizardStats = {
+    hp: 78,
+    attack: 84,
+    defense: 78,
+    specialAttack: 109,
+    specialDefense: 85,
+    speed: 100,
+  };
+
+  const calculateTotalPower = (stats) => {
+    const totalPower = stats.hp + stats.attack + stats.defense + stats.specialAttack + stats.specialDefense + stats.speed;
+    return totalPower;
+  };
+
+  const handleAnswer = (selectedPokemon) => {
+    const pikachuPower = calculateTotalPower(pikachuStats);
+    const charizardPower = calculateTotalPower(charizardStats);
+
+    if (
+      (selectedPokemon === "pikachu" && pikachuPower > charizardPower) ||
+      (selectedPokemon === "charizard" && charizardPower > pikachuPower)
+    ) {
       setScore(score + 1);
     } else {
-      setLives(lives - 1);
+      if (lives > 0) {
+        setLives(lives - 1);
+      }
     }
   };
 
@@ -31,12 +62,12 @@ const PlayContainer = () => {
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
           alt="Pikachu"
-          onClick={() => handleAnswer(true)}
+          onClick={() => handleAnswer("pikachu")}
         />
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
           alt="Charizard"
-          onClick={() => handleAnswer(false)}
+          onClick={() => handleAnswer("charizard")}
         />
       </div>
       <button onClick={handleRestart}>Restart game</button>
