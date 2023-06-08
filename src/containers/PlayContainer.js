@@ -1,52 +1,59 @@
-import { useEffect, useState } from "react";
-import EndGameModal from "../components/EndGameModal";
-import PokemonList from "../components/PokemonList";
-
-const PlayContainer = ({player, setPlayer}) => {
-//     const [pokemons, setPokemons] = useState([]);
-//     // const [pokemonToDisplay, setPokemonToDisplay] = useState([]);
-
-//     const fetchPokemons = async () => {
-
-//         const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
-//         const jsonData = await response.json();
-//         const urls = jsonData.results.map((result) => `https://pokeapi.co/api/v2/pokemon/${result.name}`);
-        
-//         const allPromises = [];
-//         urls.forEach((url)=>{
-//             allPromises.push(
-//                 fetch(url)
-//                 .then(response => response.json())
-//             )
-//         })
-
-//         const allResults = await Promise.all(allPromises);
-
-//         setPokemons(allResults.flat());
-//         setPokemonToDisplay(allResults.flat());
-// };
-
-// useEffect(()=>{
-//     fetchPokemons();
-// }, []);
-
-// const filterPokemonByName = (name) => {
-//     const foundPokemon = pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()));
-//     setPokemonToDisplay(foundPokemon);
-// }
+// const PlayContainer = () => {
 //     return ( 
 //         <>
-//              <div>
-//                 <h1>Kanto Higher or Lower</h1>
-//             </div>
-//             <div>
-//                 {/* <PokemonForm filterN={filterPokemonByName} nonFilter={fetchPokemons}/> */}
-//             </div>
-//             <div>
-//                 <PokemonList pokemons={pokemonToDisplay}/>
-//             </div>
+//             <h1>Which Pokémon has the highest combined total power?</h1>
+//             <button>Restart game</button>
 //         </>
 //      );
-}
+// }
  
+// export default PlayContainer;
+
+
+import { useState } from 'react';
+
+const PlayContainer = () => {
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [maxScore, setMaxScore] = useState(0);
+
+  const handleAnswer = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    } else {
+      setLives(lives - 1);
+    }
+  };
+
+  const handleRestart = () => {
+    if (score > maxScore) {
+      setMaxScore(score);
+    }
+    setScore(0);
+    setLives(3);
+  };
+
+  return (
+    <>
+      <h1>Which Pokémon has the highest combined total power?</h1>
+      <p>Score: {score}</p>
+      <p>Lives: {lives}</p>
+      <p>Max Score: {maxScore}</p>
+      <div>
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+          alt="Pikachu"
+          onClick={() => handleAnswer(true)}
+        />
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+          alt="Charizard"
+          onClick={() => handleAnswer(false)}
+        />
+      </div>
+      <button onClick={handleRestart}>Restart game</button>
+    </>
+  );
+};
+
 export default PlayContainer;
