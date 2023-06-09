@@ -4,8 +4,8 @@ import App from "../App";
 import PlayContainer from "../containers/PlayContainer";
 import score from "../containers/PlayContainer"
 import setScore from "../containers/PlayContainer"
-import maxScore from "../containers/PlayContainer"
-import setMaxScore from "../containers/PlayContainer"
+import highScore from "../containers/PlayContainer"
+import setHighScore from "../containers/PlayContainer"
 import setLives from "../containers/PlayContainer"
 
 const EndGameModal = () => {
@@ -14,7 +14,7 @@ const EndGameModal = () => {
 
     const handlePlayAgain = (score, setHighScore) => {
         navigate("/play")
-        setMaxScore(score);
+        setHighScore(score);
     };
 
 
