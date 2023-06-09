@@ -12,7 +12,7 @@ const EndGameModal = () => {
 
     const navigate = useNavigate();
 
-    const handlePlayAgain = (score, setMaxScore) => {
+    const handlePlayAgain = (score, setHighScore) => {
         navigate("/play")
         setMaxScore(score);
     };
