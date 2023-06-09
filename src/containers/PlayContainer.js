@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PlayContainer = () => {
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [maxScore, setMaxScore] = useState(0);
+
+  const navigate = useNavigate();
 
   const pikachuStats = {
     hp: 35,
@@ -37,9 +40,13 @@ const PlayContainer = () => {
       (selectedPokemon === "charizard" && charizardPower > pikachuPower)
     ) {
       setScore(score + 1);
-    } else {
-      if (lives > 0) {
-        setLives(lives - 1);
+    }
+    
+    else if (lives >= 1 &&  ((selectedPokemon === "pikachu" && pikachuPower < charizardPower) ||
+    (selectedPokemon === "charizard" && charizardPower < pikachuPower))) {
+        setLives(lives - 1)
+        if(lives === 1){
+        navigate("/endgame")
       }
     }
   };

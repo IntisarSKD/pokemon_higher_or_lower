@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogInModal from './LogInModal';
+import '../App.css';
 
 const LogInForm = () => {
   const navigate = useNavigate();
@@ -33,8 +34,10 @@ const LogInForm = () => {
 
   return (
     <>
-      <h1>Higher or Lower: Pokémon edition</h1>
-      <button onClick={handleJoin}>Join</button>
+    <div className='title-screen'>
+    <h1>Higher or Lower: Pokémon edition</h1>
+    </div>
+    <button onClick={handleJoin}>Join</button>
       <button onClick={handlePlay}>Play</button>
       <button>LeaderBoard</button>
 

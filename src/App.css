@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.title-screen h1{
+  animation: cyclingAnimation 2s infinite;
+  color: red;
+}
+
+@keyframes cyclingAnimation {
+  0% {
+    font-size: 200%; /* smaller font size */
+  }
+  50% {
+    font-size: 250%; /* bigger font size */
+  }
+  100% {
+    font-size: 200%; /* smaller font size */
+  }
+}
