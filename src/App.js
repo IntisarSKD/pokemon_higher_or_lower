@@ -6,10 +6,12 @@ import LayOut from "./reactrouter/LayOut";
 import NoPage from "./reactrouter/NoPage";
 import ReactDOM from "react-dom/client";
 import './App.css';
-
-
+import { useState } from "react";
+import { Filecontext } from "./reactrouter/FileContext";
 export default function App() {
+  const [currentUser, setCurrentUser] = useState({highScore:0});
   return (
+    <Filecontext.Provider value={{currentUser, setCurrentUser}}>
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<LayOut/>}/>
@@ -20,6 +22,7 @@ export default function App() {
       {/* <Route path='leader-board' element={<LeaderBoard/>}/> */}
       </Routes>
     </BrowserRouter>
+    </Filecontext.Provider>
   );
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
