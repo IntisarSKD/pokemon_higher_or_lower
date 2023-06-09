@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const PlayContainer = () => {
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
-  const [highScore, setHighScore] = useState(0);
-
+  const [maxScore, setMaxScore] = useState(0);
   const navigate = useNavigate();
 
   const pikachuStats = {
@@ -40,20 +40,29 @@ const PlayContainer = () => {
       (selectedPokemon === "charizard" && charizardPower > pikachuPower)
     ) {
       setScore(score + 1);
-    }
+    } 
     
-    else if (lives >= 1 &&  ((selectedPokemon === "pikachu" && pikachuPower < charizardPower) ||
+  //   else {
+  //     if (lives > 0) {
+  //       setLives(lives - 1);
+  //     } else {
+  //       navigate('/endgame', {state: {score}});
+  //     }
+  //   }
+  // };
+
+  else if (lives >= 1 &&  ((selectedPokemon === "pikachu" && pikachuPower < charizardPower) ||
     (selectedPokemon === "charizard" && charizardPower < pikachuPower))) {
         setLives(lives - 1)
         if(lives === 1){
-        navigate("/endgame")
+        navigate("/endgame", {state: {score}})
       }
     }
   };
 
   const handleRestart = () => {
-    if (score > highScore) {
-      setHighScore(score);
+    if (score > maxScore) {
+      setMaxScore(score);
     }
     setScore(0);
     setLives(3);
@@ -64,7 +73,7 @@ const PlayContainer = () => {
       <h1>Which Pokémon has the highest combined total power?</h1>
       <p>Score: {score}</p>
       <p>Lives: {lives}</p>
-      <p>High Score: {highScore}</p>
+      <p>Max Score: {maxScore}</p>
       <div>
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
