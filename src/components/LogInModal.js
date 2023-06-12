@@ -16,6 +16,9 @@ const LogInModal = ({ handleLogin }) => {
     submit.preventDefault();
     handleLogin(username, password);
   };
+  const handleStorage = () => {
+    localStorage.setItem("highScore", "0");
+  }
 
   return (
     <div className="modal">
@@ -38,7 +41,7 @@ const LogInModal = ({ handleLogin }) => {
               onChange={handlePasswordChange}
             />
           </label>
-          <button type="submit">Join</button>
+          <button type="submit" onClick={handleStorage}>Join</button>
         </form>
       </div>
     </div>
