@@ -211,8 +211,12 @@ const PlayContainer = () => {
 
     if (selectedPokemonStats > otherPokemonStats) {
       setScore(score + 1);
-    } else {
+      fetchPokemons();
+    } else if (selectedPokemonStats < otherPokemonStats){
       setLives(lives - 1);
+      fetchPokemons();
+    } else if (selectedPokemonStats === otherPokemonStats){
+        fetchPokemons();
     }
   };
 
@@ -234,7 +238,7 @@ const PlayContainer = () => {
       {pokemons.map((pokemon, index) => (
         <div key={index}>
           <h2>{pokemon.name}</h2>
-          <p>Total Base Stat: {pokemon.totalBaseStat}</p>
+          {/* <p>Total Base Stat: {pokemon.totalBaseStat}</p> */}
           <img src={pokemon.imageUrl} onClick={() => handleAnswer(index)} />
         </div>
       ))}
