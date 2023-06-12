@@ -77,35 +77,73 @@
 // };
 // export default PlayContainer;
 
-import { useEffect, useState } from "react";
-    const PlayContainer = () => {
+// import { useEffect, useState } from "react";
+//     const PlayContainer = () => {
 
-        const [score, setScore] = useState(0);
-        const [lives, setLives] = useState(3);
-        const [highScore, setHighScore] = useState(0);
-        const [pokemons, setPokemon] = useState([])
+//         const [score, setScore] = useState(0);
+//         const [lives, setLives] = useState(3);
+//         const [highScore, setHighScore] = useState(0);
+//         const [pokemons, setPokemon] = useState([])
 
        
-            useEffect(() => {
-                const fetchPokemons = async () => {
-                    const response = await fetch("http://localhost:8080/api/pokemon/randomPair");
-                    const data =  await response.json();
-                    setPokemon(data);
-                    }
-                fetchPokemons();
-            }, [])
+//             useEffect(() => {
+//                 const fetchPokemons = async () => {
+//                     const response = await fetch("http://localhost:8080/api/pokemon/random");
+//                     const data =  await response.json();
+//                     setPokemon(data);
+//                     }
+//                 fetchPokemons();
+//             }, [])
 
 
 
 
 
-        return ( 
-            <>
-            <h1>Hello Container</h1>
-            <p>{pokemons.name1}</p>
-            <p>{pokemons.name2}</p>
-            </>
-        );
-}
+//         return ( 
+//             <>
+//             <h1>Hello Container</h1>
+//             <p>{pokemons.name1}</p>
+//             <p>{pokemons.name2}</p>
+//             </>
+//         );
+// }
+
+// export default PlayContainer;
+
+
+import React, { useEffect, useState } from "react";
+
+const PlayContainer = () => {
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [highScore, setHighScore] = useState(0);
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemons = async () => {
+        const response1 = await fetch("http://localhost:8080/api/pokemon/random");
+        const response2 = await fetch("http://localhost:8080/api/pokemon/random");
+        const data1 = await response1.json();
+        const data2 = await response2.json();
+
+        setPokemons([data1, data2]);
+    };
+
+    fetchPokemons();
+  }, []);
+
+  return (
+    <>
+      <h1>Hello Container</h1>
+      {pokemons.map((pokemon, index) => (
+        <div key={index}>
+          <h2>{pokemon.name}</h2>
+          <p>Total Base Stat: {pokemon.totalBaseStat}</p>
+          <img src={pokemon.imageUrl}/>
+        </div>
+      ))}
+    </>
+  );
+};
 
 export default PlayContainer;
