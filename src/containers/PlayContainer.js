@@ -1,6 +1,7 @@
 // import { useContext, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import { Filecontext } from '../reactrouter/FileContext';
+// import EndGameModal from '../components/EndGameModal';
 // const PlayContainer = () => {
 //   const {currentUser, setCurrentUser} = useContext(Filecontext);
 //   const [score, setScore] = useState(0);
