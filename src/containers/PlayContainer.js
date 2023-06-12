@@ -77,41 +77,8 @@
 // };
 // export default PlayContainer;
 
-// import { useEffect, useState } from "react";
-//     const PlayContainer = () => {
-
-//         const [score, setScore] = useState(0);
-//         const [lives, setLives] = useState(3);
-//         const [highScore, setHighScore] = useState(0);
-//         const [pokemons, setPokemon] = useState([])
-
-       
-//             useEffect(() => {
-//                 const fetchPokemons = async () => {
-//                     const response = await fetch("http://localhost:8080/api/pokemon/random");
-//                     const data =  await response.json();
-//                     setPokemon(data);
-//                     }
-//                 fetchPokemons();
-//             }, [])
-
-
-
-
-
-//         return ( 
-//             <>
-//             <h1>Hello Container</h1>
-//             <p>{pokemons.name1}</p>
-//             <p>{pokemons.name2}</p>
-//             </>
-//         );
-// }
-
-// export default PlayContainer;
-
-
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const PlayContainer = () => {
   const [score, setScore] = useState(0);
@@ -119,27 +86,50 @@ const PlayContainer = () => {
   const [highScore, setHighScore] = useState(0);
   const [pokemons, setPokemons] = useState([]);
 
+    const navigate = useNavigate();
+
+  const fetchPokemons = async () => {
+    const response1 = await fetch(`http://localhost:8080/api/pokemon/random`);
+    const response2 = await fetch(`http://localhost:8080/api/pokemon/random`);
+    const data1 = await response1.json();
+    const data2 = await response2.json();
+
+    setPokemons([data1, data2]);
+};
+
   useEffect(() => {
-    const fetchPokemons = async () => {
-        const response1 = await fetch("http://localhost:8080/api/pokemon/random");
-        const response2 = await fetch("http://localhost:8080/api/pokemon/random");
-        const data1 = await response1.json();
-        const data2 = await response2.json();
-
-        setPokemons([data1, data2]);
-    };
-
     fetchPokemons();
   }, []);
 
+  const handleAnswer = () => {
+    if(pokemons.totalBaseStat = pokemons.totalBaseStat){
+        fetchPokemons()
+    }
+    else if(pokemons[1].totalBaseStat > pokemons[2].totalBaseStat || pokemons[2].totalBaseStat > pokemons[1].totalBaseStat){
+        setScore(score+1);
+    }
+    else if(lives > 1 && pokemons[1].totalBaseStat < pokemons[2].totalBaseStat || pokemons[2].totalBaseStat < pokemons[1].totalBaseStat){
+        setLives(lives-1);
+    }
+    else if(lives = 1 && (pokemons[1].totalBaseStat < pokemons[2].totalBaseStat || pokemons[2].totalBaseStat < pokemons[1].totalBaseStat)){
+        if(score > highScore){
+            setHighScore(score);
+        }
+        navigate("/endgame")
+    }
+  }
+
   return (
     <>
-      <h1>Hello Container</h1>
+        <h1>Hello Container</h1>
+        <p>Score: {score}</p>
+        <p>Lives: {lives}</p>
+        <p>High Score: {highScore}</p>
       {pokemons.map((pokemon, index) => (
         <div key={index}>
           <h2>{pokemon.name}</h2>
           <p>Total Base Stat: {pokemon.totalBaseStat}</p>
-          <img src={pokemon.imageUrl}/>
+          <img src={pokemon.imageUrl} onClick={handleAnswer}/>
         </div>
       ))}
     </>
