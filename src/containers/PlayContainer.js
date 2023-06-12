@@ -186,11 +186,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const PlayContainer = () => {
-  const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(3);
-  const [highScore, setHighScore] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
-  const navigate = useNavigate();
+    const [score, setScore] = useState(0);
+    const [lives, setLives] = useState(3);
+    const [highScore, setHighScore] = useState(() => {
+      const storedHighScore = localStorage.getItem("highScore");
+      return storedHighScore 
+    });
+    const [pokemons, setPokemons] = useState([]);
+    const navigate = useNavigate();
 
   const fetchPokemons = async () => {
     const response1 = await fetch("http://localhost:8080/api/pokemon/random");
@@ -224,6 +227,7 @@ const PlayContainer = () => {
     if (lives === 0) {
       if (score > highScore) {
         setHighScore(score);
+        localStorage.setItem("highScore", score.toString());
       }
       navigate("/endgame", { state: { score } });
     }
@@ -247,4 +251,3 @@ const PlayContainer = () => {
 };
 
 export default PlayContainer;
-
