@@ -12,7 +12,7 @@ const LogInForm = () => {
   const [isUserRegistered, setIsUserRegistered] = useState(false);
   const [player, setPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
-  
+
   const {currentGame, setCurrentGame} = useContext(Filecontext);
 
   const handleJoin = () => {
@@ -49,6 +49,7 @@ const LogInForm = () => {
   
 
   const postPlayer = async (newPlayer) => {
+    console.log(newPlayer);
     const response = await fetch('http://localhost:8080/api/players', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

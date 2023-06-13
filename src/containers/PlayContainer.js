@@ -43,21 +43,27 @@ const PlayContainer = () => {
     }
   };
 
-  const endTheGame = async() => {
+  const endTheGame = async () => {
     console.log(score);
-    console.log(currentGame);
+  
+    const requestBody = JSON.stringify({
+      score: score,
+      isComplete: true
+    });
+  
     const response = await fetch(`http://localhost:8080/games/${currentGame.id}/score`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: {
-        score: score,
-        isComplete: true
-      }
-  });
-  const finishedGame = await response.json();
-  setCurrentGame(finishedGame);
-  navigate("/endgame");
+      body: requestBody
+    });
+  
+    const finishedGame = await response.json();
+    setCurrentGame(finishedGame);
+    console.log(finishedGame);
+  
+    navigate('/endgame', {state:{score}});
   };
+  
   useEffect(() => {
     if (lives === 0) {
       if (score > highScore) {
@@ -73,7 +79,6 @@ const PlayContainer = () => {
       <h1>Hello Container</h1>
       <p>Score: {score}</p>
       <p>Lives: {lives}</p>
-      <p>High Score: {highScore}</p>
       {pokemons.map((pokemon, index) => (
         <div key={index}>
           <h2>{pokemon.name}</h2>
