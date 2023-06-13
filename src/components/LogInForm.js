@@ -8,8 +8,8 @@ const LogInForm = () => {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
-  const [player, setPlayer] = useState([]);
-  
+  const [player, setPlayer] = useState(null); // Changed to null since there's only one player
+  const [gameStarted, setGameStarted] = useState(false);
 
   const handleJoin = () => {
     setShowLoginModal(true);
@@ -25,16 +25,22 @@ const LogInForm = () => {
     setListOfUsers([...listOfUsers, newPlayer]);
     setShowLoginModal(false);
     setIsUserRegistered(true);
-    await postPlayer(newPlayer); 
+    await postPlayer(newPlayer);
   };
 
-  const handlePlay = () => {
+  const handlePlay = async () => {
     if (!isUserRegistered) {
       alert('User not created, please create a user first to play');
     } else {
-      navigate('/play');
+      const response = await fetch(`http://localhost:8080/games?playerId=${player.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+        setGameStarted(true);
+        navigate('/play');
     }
   };
+  
 
   const postPlayer = async (newPlayer) => {
     const response = await fetch('http://localhost:8080/api/players', {
@@ -43,7 +49,7 @@ const LogInForm = () => {
       body: JSON.stringify(newPlayer),
     });
     const savedPlayer = await response.json();
-    setPlayer([...player, savedPlayer]);
+    setPlayer(savedPlayer); // Update player state with the saved player
   };
 
   return (
@@ -52,8 +58,9 @@ const LogInForm = () => {
         <h1>Higher or Lower: Pokémon edition</h1>
       </div>
       <button onClick={handleJoin}>Join</button>
-      <button onClick={handlePlay}>Play</button>
-      {/* <button>Login</button> not doing anything at the moment */}
+      <button onClick={handlePlay} disabled={gameStarted}>
+        Play
+      </button>
       <button>LeaderBoard</button>
 
       {showLoginModal && <LogInModal handleLogin={handleLogin} />}
@@ -64,3 +71,4 @@ const LogInForm = () => {
 };
 
 export default LogInForm;
+
