@@ -11,8 +11,9 @@ import { Filecontext } from "./reactrouter/FileContext";
 export default function App() {
   // const [currentUser, setCurrentUser] = useState({highScore:0});
   const [currentGame, setCurrentGame] = useState({score:0, isComplete:false});
+  const [player, setPlayer] = useState(null);
   return (
-    <Filecontext.Provider value={{currentGame, setCurrentGame}}>
+    <Filecontext.Provider value={{currentGame, setCurrentGame, player, setPlayer}}>
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<LayOut/>}/>

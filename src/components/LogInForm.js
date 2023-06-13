@@ -10,10 +10,10 @@ const LogInForm = () => {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
-  const [player, setPlayer] = useState(null);
+  // const [player, setPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
 
-  const {currentGame, setCurrentGame} = useContext(Filecontext);
+  const {currentGame, setCurrentGame, player, setPlayer} = useContext(Filecontext);
 
   const handleJoin = () => {
     setShowLoginModal(true);
