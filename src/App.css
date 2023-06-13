@@ -42,8 +42,8 @@ body {
 }
 
 .sprite {
-  width: 100px; /* double size */
-  height: 100px;
+  width: 250px;
+  height: 250px;
   animation: spin 2s linear infinite, move 2s ease-in-out infinite; /* Updated to spin clockwise */
 }
 
