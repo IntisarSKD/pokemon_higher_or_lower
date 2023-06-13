@@ -9,9 +9,10 @@ import './App.css';
 import { useState } from "react";
 import { Filecontext } from "./reactrouter/FileContext";
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({highScore:0});
+  // const [currentUser, setCurrentUser] = useState({highScore:0});
+  const [currentGame, setCurrentGame] = useState({score:0, isComplete:false});
   return (
-    <Filecontext.Provider value={{currentUser, setCurrentUser}}>
+    <Filecontext.Provider value={{currentGame, setCurrentGame}}>
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<LayOut/>}/>

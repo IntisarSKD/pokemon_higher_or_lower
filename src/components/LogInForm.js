@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
 
 const LogInForm = () => {
+
   const navigate = useNavigate();
 
   const [listOfUsers, setListOfUsers] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
-  const [player, setPlayer] = useState(null); // Changed to null since there's only one player
+  const [player, setPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  
+  const {currentGame, setCurrentGame} = useContext(Filecontext);
 
   const handleJoin = () => {
     setShowLoginModal(true);
@@ -36,6 +40,8 @@ const LogInForm = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
+      const newGame = await response.json();
+      setCurrentGame(newGame);
         setGameStarted(true);
         navigate('/play');
     }

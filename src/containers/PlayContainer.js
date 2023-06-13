@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Filecontext } from "../reactrouter/FileContext";
 
 const PlayContainer = () => {
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
-    const [highScore, setHighScore] = useState(() => {
+    const [highScore, setHighScore] = useState(0)
     //   const storedHighScore = localStorage.getItem("highScore");
     //   return storedHighScore 
-    });
+    // });
     const [pokemons, setPokemons] = useState([]);
+
+    const {currentGame, setCurrentGame} = useContext(Filecontext);
+
     const navigate = useNavigate();
 
   const fetchPokemons = async () => {
@@ -39,13 +43,28 @@ const PlayContainer = () => {
     }
   };
 
+  const endTheGame = async() => {
+    console.log(score);
+    console.log(currentGame);
+    const response = await fetch(`http://localhost:8080/games/${currentGame.id}/score`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: {
+        score: score,
+        isComplete: true
+      }
+  });
+  const finishedGame = await response.json();
+  setCurrentGame(finishedGame);
+  navigate("/endgame");
+  };
   useEffect(() => {
     if (lives === 0) {
       if (score > highScore) {
         setHighScore(score);
         // localStorage.setItem("highScore", score.toString());
       }
-      navigate("/endgame", { state: { score } });
+      endTheGame()
     }
   }, [lives, score, highScore, navigate]);
 
