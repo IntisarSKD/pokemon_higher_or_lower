@@ -109,13 +109,24 @@ const LogInForm = () => {
       alert('Please enter both username and password');
       return;
     }
-
+  
+    const response = await fetch('http://localhost:8080/api/players');
+    const playerList = await response.json();
+  
+    // Check if the username already exists
+    const existingPlayer = playerList.find(player => player.username === username);
+    if (existingPlayer) {
+      alert('Username already exists. Please choose a different username.');
+      return;
+    }
+  
     const newPlayer = { username, password };
     setListOfUsers([...listOfUsers, newPlayer]);
     setShowLoginModal(false);
     setIsUserRegistered(true);
     await postPlayer(newPlayer);
   };
+  
 
   const handlePlay = async () => {
     if (!isUserRegistered) {
