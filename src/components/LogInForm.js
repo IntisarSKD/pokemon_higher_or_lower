@@ -1,90 +1,9 @@
-// import { useContext, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { Filecontext } from '../reactrouter/FileContext';
-// import LogInModal from './LogInModal';
-
-// const LogInForm = () => {
-
-//   const navigate = useNavigate();
-
-//   const [listOfUsers, setListOfUsers] = useState([]);
-//   const [showLoginModal, setShowLoginModal] = useState(false);
-//   const [isUserRegistered, setIsUserRegistered] = useState(false);
-//   // const [player, setPlayer] = useState(null);
-//   const [gameStarted, setGameStarted] = useState(false);
-
-//   const {currentGame, setCurrentGame, player, setPlayer} = useContext(Filecontext);
-
-//   const handleJoin = () => {
-//     setShowLoginModal(true);
-//   };
-
-//   const handleLogin = async (username, password) => {
-//     if (!username || !password) {
-//       alert('Please enter both username and password');
-//       return;
-//     }
-
-//     const newPlayer = { username, password };
-//     setListOfUsers([...listOfUsers, newPlayer]);
-//     setShowLoginModal(false);
-//     setIsUserRegistered(true);
-//     await postPlayer(newPlayer);
-//   };
-
-//   const handlePlay = async () => {
-//     if (!isUserRegistered) {
-//       alert('User not created, please create a user first to play');
-//     } else {
-//       const response = await fetch(`http://localhost:8080/games?playerId=${player.id}`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//       });
-//       const newGame = await response.json();
-//       setCurrentGame(newGame);
-//         setGameStarted(true);
-//         navigate('/play');
-//     }
-//   };
-  
-
-//   const postPlayer = async (newPlayer) => {
-//     console.log(newPlayer);
-//     const response = await fetch('http://localhost:8080/api/players', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(newPlayer),
-//     });
-//     const savedPlayer = await response.json();
-//     setPlayer(savedPlayer); // Update player state with the saved player
-//   };
-
-//   return (
-//     <>
-//       <div className='title-screen'>
-//         <h1>Higher or Lower: Pokémon edition</h1>
-//       </div>
-//       <button onClick={handleJoin}>Join</button>
-//       <button onClick={handlePlay} disabled={gameStarted}>
-//         Play
-//       </button>
-//       <button>LeaderBoard</button>
-
-//       {showLoginModal && <LogInModal handleLogin={handleLogin} />}
-
-//       {isUserRegistered && <p>User created, you can now play</p>}
-//     </>
-//   );
-// };
-
-// export default LogInForm;
-
-
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
+import OtherLoginModal from './OtherLoginModal';
 
 const LogInForm = () => {
 
@@ -92,7 +11,9 @@ const LogInForm = () => {
 
   const [listOfUsers, setListOfUsers] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showOtherLoginModal, setShowOtherLoginModal] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
+  const [isUserBackIn, setIsUserBackIn] = useState(false);
   // const [player, setPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
@@ -103,8 +24,11 @@ const LogInForm = () => {
   const handleJoin = () => {
     setShowLoginModal(true);
   };
+  const handleReturn = () => {
+    setShowOtherLoginModal(true);
+  };
 
-  const handleLogin = async (username, password) => {
+  const handleSignUp = async (username, password) => {
     if (!username || !password) {
       alert('Please enter both username and password');
       return;
@@ -126,12 +50,26 @@ const LogInForm = () => {
     setIsUserRegistered(true);
     await postPlayer(newPlayer);
   };
+
+
+  const handleLogin = async (username, password) => {
+    setShowOtherLoginModal(true);
+    const response = await fetch('http://localhost:8080/api/players');
+    const playerList = await response.json();
   
+    const loggedInPlayer = playerList.find(
+      (player) => player.username === username && player.password === password
+    );
+  
+    if (loggedInPlayer) {
+      setPlayer(loggedInPlayer);
+      setIsUserBackIn(true);
+      setShowOtherLoginModal(false);
+    } else (alert('Player details have not been found. Please try again'));
+  };
 
   const handlePlay = async () => {
-    if (!isUserRegistered) {
-      alert('User not created, please create a user first to play');
-    } else {
+    if (isUserRegistered || isUserBackIn){
       const response = await fetch(`http://localhost:8080/games?playerId=${player.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -140,7 +78,7 @@ const LogInForm = () => {
       setCurrentGame(newGame);
         setGameStarted(true);
         navigate('/play');
-    }
+    } else {alert('User not created, please create a user first to play')};
   };
   
 
@@ -192,14 +130,17 @@ const LogInForm = () => {
           <h1>Higher or Lower: Pokémon edition</h1>
         </div>
         <button onClick={handleJoin}>Join</button>
+        <button onClick={handleReturn}>Login</button>
         <button onClick={handlePlay} disabled={gameStarted}>
           Play
         </button>
         <button onClick={handleLeaderboard}>LeaderBoard</button>
     
-        {showLoginModal && <LogInModal handleLogin={handleLogin} onClose={() => setShowLoginModal(false)} />}
+        {showLoginModal && <LogInModal handleSignUp={handleSignUp} onClose={() => setShowLoginModal(false)} />}
+        {showOtherLoginModal && <OtherLoginModal handleLogin={handleLogin} onClose={() => setShowOtherLoginModal(false)} />}
     
         {isUserRegistered && <p>User created, you can now play</p>}
+        {isUserBackIn && <p>Welcome Back, {player.username}</p>}
     
         {showLeaderboardModal && (
           <LeaderboardModal
