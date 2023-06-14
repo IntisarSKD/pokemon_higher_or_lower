@@ -1,30 +1,27 @@
 import { useState } from "react";
 
-const LogInModal = ({handleSignUp, onClose }) => {
+const OtherLoginModal = ({ handleLogin, onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (username) => {
-    setUsername(username.target.value);
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
   };
 
-  const handlePasswordChange = (password) => {
-    setPassword(password.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
-  const handleSubmit = (submit) => {
-    submit.preventDefault();
-    handleSignUp(username, password);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleLogin(username, password);
   };
-  const handleStorage = () => {
-    localStorage.setItem("highScore", "0");
-  }
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Create an Account</h2>
-        <form onSubmit={handleSubmit}>
+        <h2>Login to your account</h2>
+        <form>
           <label>
             Trainer-name:
             <input
@@ -41,7 +38,7 @@ const LogInModal = ({handleSignUp, onClose }) => {
               onChange={handlePasswordChange}
             />
           </label>
-          <button type="submit" onClick={handleStorage}>Log In</button>
+          <button type="submit" onClick={handleSubmit}>Log in</button>
           <button onClick={onClose}>Close</button>
         </form>
       </div>
@@ -49,5 +46,4 @@ const LogInModal = ({handleSignUp, onClose }) => {
   );
 };
 
-export default LogInModal;
-
+export default OtherLoginModal;
