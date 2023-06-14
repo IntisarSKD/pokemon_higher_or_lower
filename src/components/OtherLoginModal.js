@@ -39,6 +39,7 @@ const OtherLoginModal = ({ handleLogin, onClose }) => {
             />
           </label>
           <button type="submit" onClick={handleSubmit}>Log in</button>
+          <button onClick={onClose}>Close</button>
         </form>
       </div>
     </div>
