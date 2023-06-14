@@ -68,6 +68,12 @@ const LogInForm = () => {
     } else (alert('Player details have not been found. Please try again'));
   };
 
+  const handleLogout = () => {
+    setIsUserRegistered(false);
+    setIsUserBackIn(false);
+    setPlayer(null);
+  };
+
   const handlePlay = async () => {
     if (isUserRegistered || isUserBackIn){
       const response = await fetch(`http://localhost:8080/games?playerId=${player.id}`, {
@@ -78,7 +84,7 @@ const LogInForm = () => {
       setCurrentGame(newGame);
         setGameStarted(true);
         navigate('/play');
-    } else {alert('User not created, please create a user first to play')};
+    } else {alert('User not created or logged in, please create a user first to play')};
   };
   
 
@@ -129,12 +135,13 @@ const LogInForm = () => {
         <div className='title-screen'>
           <h1>Higher or Lower: Pokémon edition</h1>
         </div>
-        <button onClick={handleJoin}>Join</button>
+        <button onClick={handleJoin}>Sign Up</button>
         <button onClick={handleReturn}>Login</button>
         <button onClick={handlePlay} disabled={gameStarted}>
           Play
         </button>
         <button onClick={handleLeaderboard}>LeaderBoard</button>
+        <button onClick={handleLogout}>Log Out</button>
     
         {showLoginModal && <LogInModal handleSignUp={handleSignUp} onClose={() => setShowLoginModal(false)} />}
         {showOtherLoginModal && <OtherLoginModal handleLogin={handleLogin} onClose={() => setShowOtherLoginModal(false)} />}
