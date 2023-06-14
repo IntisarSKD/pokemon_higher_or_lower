@@ -8,7 +8,6 @@ import OtherLoginModal from './OtherLoginModal';
 const LogInForm = () => {
 
   const navigate = useNavigate();
-
   const [listOfUsers, setListOfUsers] = useState([]);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showOtherLoginModal, setShowOtherLoginModal] = useState(false);
@@ -43,7 +42,7 @@ const LogInForm = () => {
       alert('Username already exists. Please choose a different username.');
       return;
     }
-  
+
     const newPlayer = { username, password };
     setListOfUsers([...listOfUsers, newPlayer]);
     setShowLoginModal(false);
@@ -86,7 +85,6 @@ const LogInForm = () => {
         navigate('/play');
     } else {alert('User not created or logged in, please create a user first to play')};
   };
-  
 
   const postPlayer = async (newPlayer) => {
     console.log(newPlayer);
@@ -96,7 +94,7 @@ const LogInForm = () => {
       body: JSON.stringify(newPlayer),
     });
     const savedPlayer = await response.json();
-    setPlayer(savedPlayer); // Update player state with the saved player
+    setPlayer(savedPlayer);
   };
 
   const fetchPlayerScores = async () => {

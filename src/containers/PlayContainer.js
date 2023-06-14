@@ -5,10 +5,10 @@ import { Filecontext } from "../reactrouter/FileContext";
 const PlayContainer = () => {
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
-    const [highScore, setHighScore] = useState(0)
+    const [highScore, setHighScore] = useState(() => {
     //   const storedHighScore = localStorage.getItem("highScore");
     //   return storedHighScore 
-    // });
+    });
     const [pokemons, setPokemons] = useState([]);
 
     const {currentGame, setCurrentGame} = useContext(Filecontext);
@@ -42,7 +42,6 @@ const PlayContainer = () => {
         fetchPokemons();
     }
   };
-
   const endTheGame = async () => {
     console.log(score);
   
@@ -79,6 +78,7 @@ const PlayContainer = () => {
       <h1>Hello Container</h1>
       <p>Score: {score}</p>
       <p>Lives: {lives}</p>
+      <p>High Score: {highScore}</p>
       {pokemons.map((pokemon, index) => (
         <div key={index}>
           <h2>{pokemon.name}</h2>
@@ -87,7 +87,8 @@ const PlayContainer = () => {
         </div>
       ))}
     </>
-  );
-};
+    )
+      };
+
 
 export default PlayContainer;
