@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LogInModal = ({ handleLogin }) => {
+const LogInModal = ({ handleLogin, onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -42,6 +42,7 @@ const LogInModal = ({ handleLogin }) => {
             />
           </label>
           <button type="submit" onClick={handleStorage}>Join</button>
+          <button onClick={onClose}>Close</button>
         </form>
       </div>
     </div>

@@ -27,7 +27,7 @@ const EndGameModal = () => {
       };      
       
     const handleMainMenu = () => {
-            navigate ("/")
+            navigate ("/login")
         };
 return (
             <>
