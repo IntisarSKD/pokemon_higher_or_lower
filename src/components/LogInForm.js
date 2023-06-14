@@ -86,7 +86,7 @@ const LogInForm = () => {
         navigate('/play');
     } else {alert('User not created or logged in, please create a user first to play')};
   };
-  
+  // :)
 
   const postPlayer = async (newPlayer) => {
     console.log(newPlayer);
