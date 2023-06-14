@@ -9,7 +9,8 @@ body {
   background-image: url('https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&v=enabled&s=f6b6908ea6b25b4914c6aadce02a54ed064f4ae9');
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  font-family: 'ZX Spectrum7 Bold Regular';
 }
 
 @font-face {
@@ -18,6 +19,23 @@ body {
   font-weight: normal;
   src: local('Pokemon Solid Normal'), url('Pokemon Solid.woff') format('woff');
   }
+
+@font-face {
+  font-family: 'ZX Spectrum-7 Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('ZX Spectrum-7 Regular'), url('zx_spectrum-7.woff') format('woff');
+  }
+    
+
+@font-face {
+  font-family: 'ZX Spectrum7 Bold Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('ZX Spectrum7 Bold Regular'), url('zx_spectrum-7_bold.woff') format('woff');
+  }
+
+
 
 .title-screen {
   text-align: center;
@@ -86,6 +104,7 @@ body {
 }
 
 button {
+  font-family: 'ZX Spectrum7 Bold Regular';
   font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
