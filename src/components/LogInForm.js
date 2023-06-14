@@ -126,13 +126,31 @@ const LogInForm = () => {
     const handleLeaderboard = () => {
       fetchPlayerScores();
     };
-  
 
+    const spriteUrls = [
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/7.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
+    ];
+  
     return (
       <>
         <div className='title-screen'>
           <h1>Higher or Lower: Pokémon edition</h1>
         </div>
+        <div className="sprite-container">
+        {spriteUrls.map((url, index) => (
+          <img
+            key={index}
+            className={`sprite sprite-${index + 1}`}
+            src={url}
+            alt="pokemon sprite"
+          />
+        ))}
+      </div>
         <button onClick={handleJoin}>Sign Up</button>
         <button onClick={handleReturn}>Login</button>
         <button onClick={handlePlay} disabled={gameStarted}>
