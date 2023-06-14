@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Play.css';
 
 const PlayContainer = () => {
     const [score, setScore] = useState(0);
     const [lives, setLives] = useState(3);
-    const [highScore, setHighScore] = useState(() => {
-    //   const storedHighScore = localStorage.getItem("highScore");
-    //   return storedHighScore 
-    });
+    const [highScore, setHighScore] = useState(() => {});
     const [pokemons, setPokemons] = useState([]);
     const navigate = useNavigate();
 
@@ -51,19 +49,27 @@ const PlayContainer = () => {
 
   return (
     <>
-      <h1>Hello Container</h1>
-      <p>Score: {score}</p>
-      <p>Lives: {lives}</p>
-      <p>High Score: {highScore}</p>
-      {pokemons.map((pokemon, index) => (
-        <div key={index}>
-          <h2>{pokemon.name}</h2>
-          {/* <p>Total Base Stat: {pokemon.totalBaseStat}</p> */}
-          <img src={pokemon.imageUrl} onClick={() => handleAnswer(index)} />
+        <div className="container-header">
+            <p>Score: {score}</p>
+            <p>Lives: {lives}</p>
+            <p>High Score: {highScore}</p>
         </div>
-      ))}
+        <h1 className="container-title">Which has the higher total power?</h1>
+        <div className="pokemon-container">
+            {pokemons.map((pokemon, index) => (
+                <div key={index}>
+                    <h2>{pokemon.name}</h2>
+                    <img 
+                        src={pokemon.imageUrl} 
+                        className="pokemon-image"
+                        onClick={() => handleAnswer(index)} 
+                        alt="pokemon"
+                    />
+                </div>
+            ))}
+        </div>
     </>
-  );
+);
 };
 
 export default PlayContainer;
