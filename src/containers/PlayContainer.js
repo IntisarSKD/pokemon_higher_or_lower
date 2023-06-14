@@ -79,7 +79,6 @@ const PlayContainer = () => {
       <div className="container-header">
       <p>Score: {score}</p>
       <p>Lives: {lives}</p>
-      <p>High Score: {highScore}</p>
       </div>
       <div className="pokemon-container">
       {pokemons.map((pokemon, index) => (
