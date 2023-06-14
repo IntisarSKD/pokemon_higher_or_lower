@@ -37,5 +37,18 @@
     width: 20%;
     cursor: pointer;
   }
+
+  @keyframes spin-title {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .container-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    animation: spin-title 2s linear infinite;
+    animation-delay: 10s;
+  }
   
   

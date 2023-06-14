@@ -1,11 +1,14 @@
 .buttons-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 100%;
+}
   
   button {
     font-family: 'ZX Spectrum7 Bold Regular';
@@ -27,3 +30,15 @@
     background-color: #f77d6b;
     cursor: pointer;
   }
+
+  @keyframes spin-title {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .title-screen {
+    text-align: center;
+    animation: spin-title 2s linear infinite;
+    animation-delay: 10s;
+  }
+  
