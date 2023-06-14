@@ -118,7 +118,7 @@ button {
 }
 
 
-button:hover {
+button:hover.homeScreen {
   background-color: #f77d6b;
   cursor: pointer;
 }
