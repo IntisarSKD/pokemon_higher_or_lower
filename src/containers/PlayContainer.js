@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Filecontext } from "../reactrouter/FileContext";
+import './Play.css';
 
 const PlayContainer = () => {
     const [score, setScore] = useState(0);
@@ -75,20 +76,51 @@ const PlayContainer = () => {
 
   return (
     <>
-      <h1>Hello Container</h1>
+      <div className="container-header">
       <p>Score: {score}</p>
       <p>Lives: {lives}</p>
       <p>High Score: {highScore}</p>
+      </div>
+      <div className="pokemon-container">
       {pokemons.map((pokemon, index) => (
         <div key={index}>
           <h2>{pokemon.name}</h2>
           {/* <p>Total Base Stat: {pokemon.totalBaseStat}</p> */}
-          <img src={pokemon.imageUrl} onClick={() => handleAnswer(index)} />
+          <img src={pokemon.imageUrl} className="pokemon-image" onClick={() => handleAnswer(index)} />
         </div>
       ))}
+      </div>
     </>
     )
       };
 
 
 export default PlayContainer;
+
+// return (
+//   <>
+//       <div className="container-header">
+//           <p>Score: {score}</p>
+//           <p>Lives: {lives}</p>
+//           <p>High Score: {highScore}</p>
+//       </div>
+//       <h1 className="container-title">Which has the higher total power?</h1>
+//       <div className="pokemon-container">
+//           {pokemons.map((pokemon, index) => (
+//               <div key={index}>
+//                   <h2>{pokemon.name}</h2>
+//                   <img
+//                       src={pokemon.imageUrl}
+//                       className="pokemon-image"
+//                       onClick={() => handleAnswer(index)}
+//                       alt="pokemon"
+//                   />
+//               </div>
+//           ))}
+//       </div>
+//   </>
+// );
+
+
+
+
