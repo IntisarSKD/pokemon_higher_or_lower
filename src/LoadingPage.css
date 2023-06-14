@@ -43,6 +43,11 @@
     border: none; /* Remove any border */
     background-color: transparent; /* Set the background color to transparent */
   }
+
+  button.pokeball {
+    border: none;
+    box-shadow: none;
+  }
   
   @keyframes shake-pokeball {
     0% {
