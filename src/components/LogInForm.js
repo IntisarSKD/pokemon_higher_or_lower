@@ -4,6 +4,7 @@ import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
 import OtherLoginModal from './OtherLoginModal';
+import './LogInForm.css';
 
 const LogInForm = () => {
 
@@ -151,13 +152,13 @@ const LogInForm = () => {
           />
         ))}
       </div>
-        <button onClick={handleJoin}>Sign Up</button>
-        <button onClick={handleReturn}>Login</button>
-        <button onClick={handlePlay} disabled={gameStarted}>
+        <button className='homeScreen' onClick={handleJoin}>Sign Up</button>
+        <button className='homeScreen' onClick={handleReturn}>Login</button>
+        <button className='homeScreen' onClick={handlePlay} disabled={gameStarted}>
           Play
         </button>
-        <button onClick={handleLeaderboard}>LeaderBoard</button>
-        <button onClick={handleLogout}>Log Out</button>
+        <button className='homeScreen' onClick={handleLeaderboard}>LeaderBoard</button>
+        <button className='homeScreen' onClick={handleLogout}>Log Out</button>
     
         {showLoginModal && <LogInModal handleSignUp={handleSignUp} onClose={() => setShowLoginModal(false)} />}
         {showOtherLoginModal && <OtherLoginModal handleLogin={handleLogin} onClose={() => setShowOtherLoginModal(false)} />}

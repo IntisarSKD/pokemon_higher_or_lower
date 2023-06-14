@@ -1,0 +1,29 @@
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+  
+  button.homeScreen {
+    font-family: 'ZX Spectrum7 Bold Regular';
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    border-radius: 8px;
+    padding: 1em 1.2em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 0 10px #6B8E23; /* Shiny woodland green outline */
+  }
+  
+  
+  button:hover.homeScreen {
+    background-color: #f77d6b;
+    cursor: pointer;
+  }
