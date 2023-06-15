@@ -102,6 +102,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Filecontext } from "../reactrouter/FileContext";
 import './Play.css';
+import ForestPokemonB from '../images/ForestPokemonB.webp'
+
 
 const PlayContainer = () => {
   const [score, setScore] = useState(0);
@@ -204,6 +206,9 @@ const PlayContainer = () => {
 
   return (
     <>
+      <div className="background-photo2">
+        <img src={ForestPokemonB} alt="Background Image" />
+      </div>
       <div className="container-header">
         <p>Score: {score}</p>
         <div className="hearts-container">
