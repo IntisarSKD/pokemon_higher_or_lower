@@ -22,7 +22,21 @@ const PlayContainer = () => {
     const data1 = await response1.json();
     const data2 = await response2.json();
 
-    setPokemons([data1, data2]);
+    const capitalizedData1 = {
+      ...data1,
+      name: capitalizeFirstLetter(data1.name)
+    };
+  
+    const capitalizedData2 = {
+      ...data2,
+      name: capitalizeFirstLetter(data2.name)
+    };
+  
+    setPokemons([capitalizedData1, capitalizedData2]);
+  };
+  
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   useEffect(() => {
