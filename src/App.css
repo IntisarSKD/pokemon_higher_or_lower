@@ -91,7 +91,7 @@ body {
 }
 
 @keyframes move {
-  0%, 100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(20px); }
   50% { transform: translateY(-20px); }
 }
 
@@ -114,8 +114,10 @@ button {
   border-radius: 8px;
   padding: 1em 1.2em;
   margin-bottom: 10px;
+  margin-right: 10px;
   transition: all .2s ease-in-out;
   box-shadow: 0 0 10px #6B8E23; /* Shiny woodland green outline */
+  transform: translate(500px, 400px);
 }
 
 
