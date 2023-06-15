@@ -81,8 +81,9 @@ body {
 }
 
 .sprite {
-  width: 250px;
-  height: 250px;
+  width: 15vw; /* 20% of the viewport width */
+  height: 15vw; /* 20% of the viewport width */
+  margin-top: 20px;
   animation: spin 2s linear infinite, move 2s ease-in-out infinite; /* Updated to spin clockwise */
 }
 
