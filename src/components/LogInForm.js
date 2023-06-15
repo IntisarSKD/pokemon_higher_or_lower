@@ -20,16 +20,16 @@ const LogInForm = () => {
 
   const {currentGame, setCurrentGame, player, setPlayer} = useContext(Filecontext);
 
-  let audio = new Audio('src/title.mp3');
+  // let audio = new Audio('../title.mp3');
 
-  useEffect(() => {
-    audio.play();
-    audio.loop = true;
+  // useEffect(() => {
+  //   audio.play();
+  //   audio.loop = true;
 
-    return () => {
-      audio.pause();
-    };
-  }, []);
+  //   return () => {
+  //     audio.pause();
+  //   };
+  // }, []);
 
   const handleJoin = () => {
     setShowLoginModal(true);
