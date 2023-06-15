@@ -4,7 +4,7 @@ import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
 import OtherLoginModal from './OtherLoginModal';
-import ForestPokemonB from '../images/ForestPokemonB.webp'
+import ForestPass from '../images/ForestPass.webp'
 import pikachuLoading from "../images/pikachu.gif";
 
 const LogInForm = () => {
@@ -136,10 +136,10 @@ const LogInForm = () => {
 
     const spriteUrls = [
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png",
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/7.png",
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/7.png",
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
     ];
   
@@ -151,7 +151,7 @@ const LogInForm = () => {
           <img src={pikachuLoading} alt="Loading..." />
         </div>
       )}
-        <img src={ForestPokemonB} alt="Background Image" />
+        <img src={ForestPass} alt="Background Image" />
         </div>
         <div className='title-screen'>
           <h1>Higher or Lower: Pokémon edition</h1>
