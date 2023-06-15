@@ -5,7 +5,6 @@ import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
 import OtherLoginModal from './OtherLoginModal';
 import ForestPass from '../images/ForestPass.webp'
-import pikachuLoading from "../images/pikachu.gif";
 
 const LogInForm = () => {
 
@@ -146,15 +145,10 @@ const LogInForm = () => {
     return (
       <>
         <div className='background-photo'>
-        {isLoading && (
-        <div className="loading-overlay">
-          <img src={pikachuLoading} alt="Loading..." />
-        </div>
-      )}
         <img src={ForestPass} alt="Background Image" />
         </div>
         <div className='title-screen'>
-          <h1>Higher or Lower: Pokémon edition</h1>
+          <h1>Pokémon: Higher or Lower</h1>
         </div>
         <div className="sprite-container">
         {spriteUrls.map((url, index) => (
