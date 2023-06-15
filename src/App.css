@@ -37,33 +37,40 @@ body {
 
 
 
-.title-screen {
-  text-align: center;
-  position: absolute;
-  top: 5%;
-  width: 100%;
-  animation: titleSpin 10s steps(1) infinite;
-  font-family: 'Pokemon Solid Normal';
-  font-size: calc(10px + 2vmin);
-  color: #ffcb05;
-  -webkit-text-stroke: 3px #2a75bb;
-
-  /* outline-color: blue; */
-  /* color: #f44336; */
-  /* font-weight: bold; */
-}
-
-@keyframes titleSpin {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes titleSizeChange {
-  0%, 100% { font-size: calc(10px + 2vmin); }
-  50% { font-size: calc(12px + 2vmin); }
-}
-
+  .title-screen {
+    text-align: center;
+    position: absolute;
+    top: 12%;
+    width: 100%;
+    font-family: 'Pokemon Solid Normal';
+    font-size: calc(10px + 2vmin);
+    color: #ffcb05;
+    -webkit-text-stroke: 3px #2a75bb;
+    animation: titleSpin 10s steps(1) infinite, titleSizeChange 4s infinite;
+  }
+  
+  @keyframes titleSpin {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes titleSizeChange {
+    0%,
+    100% {
+      font-size: calc(20px + 2vmin);
+    }
+    50% {
+      font-size: calc(12px + 2vmin);
+    }
+  }
+  
 .sprite-container {
   display: flex;
   justify-content: space-around;
@@ -103,7 +110,6 @@ body {
   top: 50%;
   width: 100%;
 }
-
 button {
   font-family: 'ZX Spectrum7 Bold Regular';
   font-size: 1.2rem;
@@ -115,11 +121,52 @@ button {
   padding: 1em 1.2em;
   margin-bottom: 10px;
   margin-right: 10px;
+  margin-left: 10px;
   transition: all .2s ease-in-out;
   box-shadow: 0 0 10px #6B8E23; /* Shiny woodland green outline */
-  transform: translate(500px, 400px);
 }
-
+.centre-buttons button {
+  font-family: 'ZX Spectrum7 Bold Regular';
+  font-size: 3.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background-color: #f44336;
+  border: none;
+  border-radius: 20px;
+  padding: 0.2em 1em;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 10px #6B8E23; /* Shiny woodland green outline */
+  transform: translate(450px, 400px);
+}
+.top-right-buttons button{
+  font-family: 'ZX Spectrum7 Bold Regular';
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #f44336;
+  border: none;
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  margin-bottom: 0px;
+  margin-right: 10px;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 10px #6B8E23; /* Shiny woodland green outline */
+  transform: translate(1095px,5px);
+}
+.writing-top-right {
+  font-family: 'ZX Spectrum7 Bold Regular';
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: yellow;
+  border: none;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  transition: all .2s ease-in-out;
+  transform: translate(1120px,-75px);
+}
 
 button:hover.homeScreen {
   background-color: #f77d6b;
@@ -127,4 +174,24 @@ button:hover.homeScreen {
 }
 button:hover{
   opacity: 50%;
+}
+.leaderboard-modal{
+  font-size: x-large;
+  color: crimson;
+}
+.leaderboard-words th{
+  padding-right: 10px;
+}
+.leaderboard-modal button{
+  font-size: x-large;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.modal-content label{
+  padding-right: 10px;
+}
+.modal-content button{
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

@@ -151,19 +151,26 @@ const LogInForm = () => {
           />
         ))}
       </div>
-        <button onClick={handleJoin}>Sign Up</button>
-        <button onClick={handleReturn}>Login</button>
-        <button onClick={handlePlay} disabled={gameStarted}>
+         <div className='top-right-buttons'> 
+          <button onClick={handleJoin}>Sign Up</button>
+          <button onClick={handleReturn}>Login</button>
+          <button onClick={handleLogout}>Log Out</button>
+          </div>
+          <div className='centre-buttons'>
+          <button onClick={handlePlay} disabled={gameStarted}>
           Play
-        </button>
-        <button onClick={handleLeaderboard}>LeaderBoard</button>
-        <button onClick={handleLogout}>Log Out</button>
+          </button>
+          <button onClick={handleLeaderboard}>LeaderBoard</button>
+          </div>
+          
+
     
         {showLoginModal && <LogInModal handleSignUp={handleSignUp} onClose={() => setShowLoginModal(false)} />}
         {showOtherLoginModal && <OtherLoginModal handleLogin={handleLogin} onClose={() => setShowOtherLoginModal(false)} />}
-    
+        <div className='writing-top-right'>
         {isUserRegistered && <p>User created, you can now play</p>}
         {isUserBackIn && <p>Welcome Back, {player.username}</p>}
+        </div>
     
         {showLeaderboardModal && (
           <LeaderboardModal

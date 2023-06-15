@@ -7,7 +7,7 @@ const LeaderboardModal = ({ playerScores, onClose }) => {
         <h1>Leaderboard</h1>
         <table>
           <thead>
-            <tr>
+            <tr className='leaderboard-words'>
               <th>Username</th>
               <th>Highest Score</th>
             </tr>
