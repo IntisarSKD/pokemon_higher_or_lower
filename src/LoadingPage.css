@@ -36,6 +36,7 @@ button.pokeball {
 .pokeball:hover {
   animation: shake-pokeball 0.8s infinite ease-in-out;
   opacity:100%;
+  background-color: black;
 }
 @keyframes shake-pokeball {
   0% {

@@ -172,9 +172,11 @@ button:hover.homeScreen {
   background-color: #f77d6b;
   cursor: pointer;
 }
-button:hover{
-  opacity: 50%;
+button:hover {
+  background-color: blue;
+  cursor: pointer;
 }
+
 .leaderboard-modal{
   font-size: x-large;
   color: crimson;
