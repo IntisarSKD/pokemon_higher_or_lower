@@ -5,6 +5,7 @@ import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
 import OtherLoginModal from './OtherLoginModal';
 import ForestPokemonB from '../images/ForestPokemonB.webp'
+import pikachuLoading from "../images/pikachu.gif";
 
 const LogInForm = () => {
 
@@ -18,6 +19,7 @@ const LogInForm = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
   const [playerScores, setPlayerScores] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {currentGame, setCurrentGame, player, setPlayer} = useContext(Filecontext);
 
@@ -83,7 +85,11 @@ const LogInForm = () => {
       const newGame = await response.json();
       setCurrentGame(newGame);
         setGameStarted(true);
-        navigate('/play');
+        setIsLoading(true);
+        setTimeout(() => {
+          setIsLoading(false)
+          navigate('/play');
+        }, 3000);
     } else {alert('User not created or logged in, please create a user first to play')};
   };
 
@@ -140,6 +146,11 @@ const LogInForm = () => {
     return (
       <>
         <div className='background-photo'>
+        {isLoading && (
+        <div className="loading-overlay">
+          <img src={pikachuLoading} alt="Loading..." />
+        </div>
+      )}
         <img src={ForestPokemonB} alt="Background Image" />
         </div>
         <div className='title-screen'>
