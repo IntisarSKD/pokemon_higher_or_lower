@@ -1,13 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import App from "../App";
-import PlayContainer from "../containers/PlayContainer";
-import score from "../containers/PlayContainer"
-import setScore from "../containers/PlayContainer"
-import highScore from "../containers/PlayContainer"
-import setHighScore from "../containers/PlayContainer"
-import setLives from "../containers/PlayContainer"
 import { Filecontext } from "../reactrouter/FileContext";
+import "../EndGameModalStyle/EndGameModal.css"; // Update the import path for CSS
+
+
 const EndGameModal = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -30,12 +26,14 @@ const EndGameModal = () => {
             navigate ("/login")
         };
 return (
-            <>
-                <h1>Game Over!</h1>
-                <p>Final Score: {score}</p>
-                <button onClick={handlePlayAgain}>Play again</button>
-                <button onClick={handleMainMenu}>Main Menu</button>
-            </>
+  <div className="end-game-modal">
+    <h1>Game Over!</h1>
+    <p>Final Score: {score}</p>
+  <div className="button-container">
+    <button onClick={handlePlayAgain}>Play again</button>
+    <button onClick={handleMainMenu}>Main Menu</button>
+  </div>
+</div>
          );
       
         };
