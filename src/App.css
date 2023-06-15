@@ -4,16 +4,10 @@
   box-sizing: border-box;
 }
 
-/* body { */
-  /* background-image: url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg'); */
-  /* background-image: url('https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&v=enabled&s=f6b6908ea6b25b4914c6aadce02a54ed064f4ae9');
-  background-repeat: no-repeat;
-  height: 1000vw;
-  width: 1000vw; */
+ body { 
+   font-family: 'ZX Spectrum7 Bold Regular';
+} 
 
-  /* font-family: Arial, sans-serif; */
-  /* font-family: 'ZX Spectrum7 Bold Regular';
-} */
 .background-photo {
   position: fixed;
   top: 0;
