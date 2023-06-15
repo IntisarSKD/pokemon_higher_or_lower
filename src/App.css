@@ -9,6 +9,7 @@ body {
   background-image: url('https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&v=enabled&s=f6b6908ea6b25b4914c6aadce02a54ed064f4ae9');
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: cover;
   /* font-family: Arial, sans-serif; */
   font-family: 'ZX Spectrum7 Bold Regular';
 }
