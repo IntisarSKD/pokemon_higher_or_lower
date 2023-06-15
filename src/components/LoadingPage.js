@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Filecontext } from '../reactrouter/FileContext';
 import { Link } from 'react-router-dom';
+import { AudioContext } from '../AudioContext';
 import './../LoadingPage.css';
 
 const LoadingPage = () => {
   const navigate = useNavigate();
   const [loadingComplete, setLoadingComplete] = useState(false);
+  const { startAudio, audioStarted } = useContext(AudioContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,6 +18,9 @@ const LoadingPage = () => {
 
   const handlePokeballClick = () => {
     console.log('Pokeball clicked!');
+    if (!audioStarted) {
+      startAudio();
+    }
     navigate('/login');
   };
 
@@ -31,3 +36,4 @@ const LoadingPage = () => {
 };
 
 export default LoadingPage;
+

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
@@ -19,6 +19,17 @@ const LogInForm = () => {
   const [playerScores, setPlayerScores] = useState([]);
 
   const {currentGame, setCurrentGame, player, setPlayer} = useContext(Filecontext);
+
+  let audio = new Audio('src/title.mp3');
+
+  useEffect(() => {
+    audio.play();
+    audio.loop = true;
+
+    return () => {
+      audio.pause();
+    };
+  }, []);
 
   const handleJoin = () => {
     setShowLoginModal(true);

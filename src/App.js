@@ -45,12 +45,15 @@ import './App.css';
 import { useState } from "react";
 import { Filecontext } from "./reactrouter/FileContext";
 import LoadingPage from "./components/LoadingPage";
+import { AudioContext, AudioProvider } from './AudioContext';
+
 
 export default function App() {
   const [currentGame, setCurrentGame] = useState({ score: 0, isComplete: false });
   const [player, setPlayer] = useState(null);
 
   return (
+    <AudioProvider>
     <Filecontext.Provider value={{ currentGame, setCurrentGame, player, setPlayer }}>
       <BrowserRouter>
         <Routes>
@@ -63,6 +66,7 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </Filecontext.Provider>
+    </AudioProvider>
   );
 }
 
