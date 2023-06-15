@@ -1,13 +1,26 @@
-import Pokemon from "./Pokemon";
+// import Pokemon from "./Pokemon";
 
-const PokemonList = () => {
-    return ( 
-        <>
-        <h2>PokemonList</h2>
-        {/* <Pokemon/> */}
-        {/* {pokemonComponents} */}
-        </>
-     );
-}
- 
-export default PokemonList;
+// const PokemonList = ({pokemons}) => {
+
+//     const pokemonComponents = pokemons.map((pokemon, index) => {
+//         return(
+//             <Pokemon
+//                 key={index}
+//                 pokemon={pokemon}
+//             />  
+//         )
+//     });
+    
+//         return ( 
+//             <>
+//                 <div>
+//                     <hr/>
+//                     <h2>Professor Oak's Notes:</h2>
+//                     <hr/>
+//                     {/* <PokemonForm pokemonComponents={pokemonComponents}/> */}
+//                 </div>
+//                 {pokemonComponents}
+//             </>
+//          );
+//     }
+// export default PokemonList;

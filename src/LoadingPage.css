@@ -1,0 +1,57 @@
+.loading-page {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-bar {
+  width: 0;
+  height: 5px;
+  background-color: #fff;
+  animation: fill-progress 2s linear forwards;
+}
+@keyframes fill-progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.pokeball {
+  width: 200px;
+  height: 200px;
+  background-image: url("./images/pokeball.jpg");
+  background-size: contain; /* Adjust the background size */
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none; /* Remove any border */
+  background-color: transparent; /* Set the background color to transparent */
+}
+button.pokeball {
+  border: none;
+  box-shadow: none;
+}
+.pokeball:hover {
+  animation: shake-pokeball 0.8s infinite ease-in-out;
+  opacity:100%;
+  background-color: black;
+}
+@keyframes shake-pokeball {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
