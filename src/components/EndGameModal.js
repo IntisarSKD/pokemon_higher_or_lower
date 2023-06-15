@@ -8,6 +8,7 @@ import highScore from "../containers/PlayContainer"
 import setHighScore from "../containers/PlayContainer"
 import setLives from "../containers/PlayContainer"
 import { Filecontext } from "../reactrouter/FileContext";
+
 const EndGameModal = () => {
     const navigate = useNavigate();
     const location = useLocation();
