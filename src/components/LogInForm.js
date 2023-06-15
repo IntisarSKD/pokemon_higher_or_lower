@@ -4,6 +4,7 @@ import { Filecontext } from '../reactrouter/FileContext';
 import LogInModal from './LogInModal';
 import LeaderboardModal from './LeaderboardModal';
 import OtherLoginModal from './OtherLoginModal';
+import ForestPokemonB from '../images/ForestPokemonB.webp'
 
 const LogInForm = () => {
 
@@ -138,6 +139,9 @@ const LogInForm = () => {
   
     return (
       <>
+        <div className='background-photo'>
+        <img src={ForestPokemonB} alt="Background Image" />
+        </div>
         <div className='title-screen'>
           <h1>Higher or Lower: Pokémon edition</h1>
         </div>
