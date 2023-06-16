@@ -177,7 +177,6 @@ const PlayContainer = () => {
     if (lives === 0) {
       if (score > highScore) {
         setHighScore(score);
-        // localStorage.setItem("highScore", score.toString());
       }
       endTheGame();
     }
@@ -206,7 +205,7 @@ const PlayContainer = () => {
 
   return (
     <>
-      <div className="background-photo2">
+      <div className="background-photo2">    
         <img src={ForestPokemonB} alt="Background Image" />
       </div>
       <div className="container-header">
@@ -217,27 +216,6 @@ const PlayContainer = () => {
           ))}
         </div>
       </div>
-      {/* <div className="pokemon-container">
-        {pokemons.length > 0 ? (
-          pokemons.map((pokemon, index) => (
-            <div key={index}>
-              <h2>{pokemon.name}</h2>
-              {pokemon.showStats ? (
-                <p>Total Base Stat: {pokemon.totalBaseStat}</p>
-              ) : (
-                <img
-                  src={pokemon.imageUrl}
-                  className="pokemon-image"
-                  onClick={() => handleAnswer(index)}
-                  alt={pokemon.name}
-                />
-              )}
-            </div>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div> */}
       <div className="pokemon-container">
   {pokemons !== null &&
     pokemons.map((pokemon, index) => (
@@ -262,6 +240,9 @@ const PlayContainer = () => {
 };
 
 export default PlayContainer;
+
+
+
 
 
 
