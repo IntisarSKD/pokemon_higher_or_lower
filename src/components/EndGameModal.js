@@ -95,17 +95,17 @@ const EndGameModal = () => {
 
   const getScoreMessage = () => {
     if (score === 0) {
-      return "Oh no! It's not very effective. Keep training!";
+      return "Oh no! It's not very effective.";
     } else if (score >= 1 && score <= 3) {
-      return "All things considered, could be worse right?";
+      return "With a score like that, I bet even a wild Rattata could defeat you";
     } else if (score >= 4 && score <= 7) {
-      return "Don't give up! Keep going!";
+      return "The path is long and wide, keep training if you want to unlock the greatness you hide."
     } else if (score >= 8 && score <= 15) {
-      return "Great job! You're on the right track!";
+      return "Bravo! You're making waves on the Pokémon road!";
     } else if (score >= 16 && score <= 25) {
-      return "You're on your way to becoming a Pokémon Master!";
+      return "Harness the power of your mind, transcending limits like Mewtwo's psychic kind.";
     } else if (score >= 26) {
-      return "Congratulations! You are a true Pokémon Master!";
+      return "Congratulations, you are a true Pokémon Master.";
     }
   };
 
